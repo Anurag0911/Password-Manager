@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
+<h1>Passwords</h1>
+<ul id="Passwords">
+  {% for Password in user.Passwords %}
+  <li>
+    Site{{ Password.site }}
+    Username{{ Password.username }}
+    Password{{ Password.password }}
+    Password{{ Password.data }}
+    <button type="button" onClick="deletePassword({{ Password.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+
+
+
+
+<form method="POST">
+  Site<textarea name="site" id="site"></textarea>
+  Username<textarea name="username" id="username"></textarea>
+  password<textarea name="password" id="password"></textarea>
+  Note<textarea name="note" id="note"></textarea>
+  <br />
+  <div>
+    <button type="submit" >Add</button>
+  </div>
+</form>
+{% endblock %}

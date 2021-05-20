@@ -1,0 +1,3 @@
+.vscode
+manager/__pycache__
+manager/database.db
