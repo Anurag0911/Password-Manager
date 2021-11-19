@@ -1,30 +1,60 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
-<h1>Passwords</h1>
+<h1 align="center">Passwords</h1>
 <ul id="Passwords">
-  {% for Password in user.Passwords %}
-  <li>
-    Site{{ Password.site }}
-    Username{{ Password.username }}
-    Password{{ Password.password }}
-    Password{{ Password.data }}
-    <button type="button" onClick="deletePassword({{ Password.id }})">
-      <span aria-hidden="true">&times;</span>
-    </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Site</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Notes</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    {% for Password in user.Passwords %}
+    <tbody>
+      <tr>
+        <td>{{ Password.site }}</td>
+        <td>{{ Password.username }}</td>
+        <td>{{ Password.password }}</td>
+        <td>{{ Password.data }}</td>
+        <td><button type="button" onClick="deletePassword({{ Password.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+
+    
   </li>
-  {% endfor %}
 </ul>
 
 
 
 
-<form method="POST">
-  Site<textarea name="site" id="site"></textarea>
-  Username<textarea name="username" id="username"></textarea>
-  password<textarea name="password" id="password"></textarea>
-  Note<textarea name="note" id="note"></textarea>
-  <br />
-  <div>
+<form method="POST" align="center">
+  <input 
+  name="site" 
+  id="site" 
+  placeholder="Enter email">
+</input>
+<input 
+  name="username" 
+  id="username"
+  placeholder="Enter Username">
+</input>
+  
+<input 
+  name="password" 
+  id="password"
+  placeholder="Enter Password">
+</input>
+<input 
+  name="note" 
+  id="note"
+  placeholder="Enter Notes">
+</input>
     <button type="submit" >Add</button>
-  </div>
 </form>
 {% endblock %}
